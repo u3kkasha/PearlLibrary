@@ -2,6 +2,13 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using PearlLibrary.Data;
+using PearlLibrary.Models;
+using PearlLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
