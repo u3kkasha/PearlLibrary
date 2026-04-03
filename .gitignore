@@ -1,0 +1,53 @@
+# Local development secrets
+/backend/appsettings.Development.json
+
+# Additional sensitive machine-specific config
+/backend/secrets.json
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Rider
+.idea/
+*.sln.iml
+
+# NuGet
+*.nupkg
+project.lock.json
+packages/
+**/packages/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific
+*.me
+
+# Local history
+
+# .NET Core
+**/bin/
+**/obj/
+**/out/
+
+# Runtime
+*.vsix
+*.cache
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
