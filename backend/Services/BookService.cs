@@ -15,7 +15,7 @@ public class BookService : IBookService
 
     public async Task<IEnumerable<BookDto>> SearchBooksAsync(BookSearchQuery query)
     {
-        var books = _context.Books.AsQueryable();
+        var books = _context.Books.AsNoTracking().AsQueryable();
 
         if (!string.IsNullOrEmpty(query.Title))
             books = books.Where(b => b.Title.Contains(query.Title));
