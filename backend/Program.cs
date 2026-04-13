@@ -253,11 +253,12 @@ using (var scope = app.Services.CreateScope())
     {
         (string hash, byte[] salt) HashPassword(string password)
         {
+            const int iterations = 600000;
             using var rng = RandomNumberGenerator.Create();
             var saltBytes = new byte[16];
             rng.GetBytes(saltBytes);
 
-            var hashBytes = Rfc2898DeriveBytes.Pbkdf2(password, saltBytes, 10000, HashAlgorithmName.SHA256, 32);
+            var hashBytes = Rfc2898DeriveBytes.Pbkdf2(password, saltBytes, iterations, HashAlgorithmName.SHA256, 32);
 
             return (Convert.ToBase64String(hashBytes), saltBytes);
         }

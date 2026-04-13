@@ -13,6 +13,7 @@ public class AuthService : IAuthService
 {
     private readonly LibraryDbContext _context;
     private readonly IConfiguration _configuration;
+    private const int Iterations = 600000;
 
     public AuthService(LibraryDbContext context, IConfiguration configuration)
     {
@@ -26,14 +27,14 @@ public class AuthService : IAuthService
         var salt = new byte[16];
         rng.GetBytes(salt);
 
-        var hash = Rfc2898DeriveBytes.Pbkdf2(password, salt, 10000, HashAlgorithmName.SHA256, 32);
+        var hash = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, HashAlgorithmName.SHA256, 32);
 
         return (Convert.ToBase64String(hash), salt);
     }
 
     private bool VerifyPassword(string password, string storedHash, byte[] salt)
     {
-        var hash = Rfc2898DeriveBytes.Pbkdf2(password, salt, 10000, HashAlgorithmName.SHA256, 32);
+        var hash = Rfc2898DeriveBytes.Pbkdf2(password, salt, Iterations, HashAlgorithmName.SHA256, 32);
         return Convert.ToBase64String(hash) == storedHash;
     }
 
